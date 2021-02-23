@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="sp" xmlns:th="http://www.thymeleaf.org">
+  	<head>
+  		
+  		<meta name="author" content="Gonzalez Brian leonel">
+  		
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Bootstrap CSS -->
+		<link th:rel="stylesheet" th:href="@{webjars/bootstrap/css/bootstrap.min.css}">
+		    
+		<!-- FontAwesome -->
+		<link th:rel="stylesheet" th:href="@{webjars/font-awesome/css/all.css}">
+		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		
+		<title>Cargando</title>
+	</head>
+	<body>
+		
+		<!-- NavBar 
+		<div th:insert="layout/header :: ${navbar}" class="fixed-top m-0 p-0"></div> -->
+		
+		<!-- 
+		<div class="container-fluid m-0">
+			<div class="vh-100 row m-0 p-0 d-flex justify-content-center align-items-center">
+				<div class="alert alert-light m-0 p-4 col-sm-5 row animated fadeInDown" role="alert">
+					<div class="col-sm-12 row d-flex justify-content-center align-items-center m-0 p-4">
+						<h2 class="alert-heading text-center h1 m-0">¡Bienvenido <span th:text="${#authentication.getPrincipal().getUsername()}"></span>!</h2>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<div style="height: 100vh; width: 100vw;" class="d-flex justify-content-center align-items-center m-0 p-0">
+		
+			<div class="container-fluid h-100 d-flex justify-content-center align-items-center">
+				
+				<div class="card m-0" style="width: 34em;">
+					<div class="card-body container">
+						<div class="row">
+							<!--  
+							<div class="progress col-sm-10 m-auto">
+						  		<div class="progress-bar" role="progressbar" th:value="${valueBarProgress}" aria-valuemin="0" aria-valuemax="10"></div>
+							</div> -->
+							<div class="col-sm-10 mt-0 mb-1 mx-auto container">
+								<div class="row d-flex justify-content-between">
+									<h5 class="card-title m-0 h6 font-weight-lighter d-flex justify-content-center align-items-center">Pregunta #<span th:text="${valueBarProgress}"></span></h5>
+									
+									<div>
+										<!-- Button modal -->
+										<button type="button" class="btn btn-light d-inline-block" data-toggle="modal" data-target="#respuestaCorrecta">
+											<i class="fas fa-eye"></i>
+										</button>
+										
+										<!-- Next Link -->
+										<a type="button" class="btn btn-outline-success d-inline-block" th:href="@{/next}">
+											<i class="fas fa-angle-double-right"></i>
+										</a>
+									</div>
+									
+								</div>
+							</div>
+							
+							<div class="col-sm-10 my-1 mx-auto container">
+								<div class="row">
+									<h2 class="my-2 mx-auto h1 font-weight-normal text-center" th:text="${unaPpregunta.pregunta}"></h2>
+								</div>
+							</div>
+							
+							<div class="col-sm-10 my-1 mx-auto seccion-preg btn">
+								<h4 class="m-auto h4 font-weight-normal text-center" th:text="${unaPpregunta.correcta}"></h4>
+							</div>
+							
+							<div class="col-sm-10 my-1 mx-auto seccion-preg btn">
+								<h4 class="m-auto h4 font-weight-normal text-center" th:text="${unaPpregunta.opcion1}"></h4>
+							</div>
+							
+							<div class="col-sm-10 my-1 mx-auto seccion-preg btn">
+								<h4 class="m-auto h4 font-weight-normal text-center" th:text="${unaPpregunta.opcion2}"></h4>
+							</div>
+							
+							<div class="col-sm-10 my-1 mx-auto seccion-preg btn">
+								<h4 class="m-auto h4 font-weight-normal text-center" th:text="${unaPpregunta.opcion3}"></h4>
+							</div>
+						</div>
+					</div>
+				</div>
+  				
+			</div>
+		
+		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="respuestaCorrecta" tabindex="-1" aria-labelledby="respuestaCorrectaLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+		    	<div class="modal-content">
+		      		<div class="modal-header">
+		      			<h5 class="modal-title">RESPUESTA</h5>
+		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          			<span aria-hidden="true">&times;</span>
+		        		</button>
+		      		</div>
+		      		<div class="modal-body container m-0">
+		      			<div class="row d-flex justify-content-center">
+			      			<div class="col-sm-10 my-1 mx-auto container">
+								<div class="row">
+									<h2 class="my-3 mx-auto h1 font-weight-normal text-center" th:text="${unaPpregunta.pregunta}"></h2>
+								</div>
+							</div>
+								
+							<div class="col-sm-10 my-1 mx-auto seccion-preg btn">
+								<h4 class="m-auto h4 font-weight-normal text-center" th:text="${unaPpregunta.correcta}"></h4>
+							</div>
+		      			</div>
+		      		</div>
+		    	</div>
+		  	</div>
+		</div>
+		
+		<!-- Footer 
+		<div th:insert="layout/footer :: footer-info" class="m-0 p-0"></div> -->
+		
+		
+		
+
+	    <!-- Optional JavaScript -->
+	    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+		<script th:src="@{/webjars/popper.js/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"	src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		
+	    <!--  
+	    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+  	</body>
+</html>

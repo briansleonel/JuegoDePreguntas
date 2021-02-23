@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="sp" xmlns:th="http://www.thymeleaf.org">
+  	<head>
+  		
+  		<meta name="author" content="Gonzalez Brian leonel">
+  		
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Bootstrap CSS -->
+		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		    
+		<!-- FontAwesome -->
+		<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}">
+		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+		
+		<title>Editar Usuario</title>
+	</head>
+	<body>
+		
+		<!-- NavBar -->
+		<div th:insert="layout/header :: header-signup" class="sticky-top"></div>
+		
+		<div class="container-fluid d-flex justify-content-center my-5" style="margin-top: 20px">
+  			<div class="card" style="width: 70vw;">
+  				<div class="card-body container">
+  						<div class="row">
+					  			<div class="col-sm-10 container mx-auto my-4">
+					  				<div class="row">
+					  					<h3 class="h3 text-center mx-auto my-2">EDITAR USUARIO</h3>
+					  				</div>
+					  			</div>
+							  	<form class="col-sm-10 container m-auto" th:object="${usuarioForm}" th:action="@{/guardarUsuarioEditado}" method="post">
+							  		<div class="row">
+							  		
+							  			<div class="col-sm-12 form-group">
+									  		<div class="container">
+							  					<div class="row">
+							  						<label class="col-sm-12 col-lg-3 text-center" for="id">ID:</label>
+									    			<input type="text" class="col-sm-12 col-lg-9 form-control" id="id" th:field="*{id}" disabled="disabled">
+							  					</div>
+							  				</div>
+									  	</div>
+									  	
+							  			<div class="col-sm-12 form-group">
+									  		<div class="container">
+							  					<div class="row">
+							  						<label class="col-sm-12 col-lg-3 text-center" for="username">USERNAME:</label>
+									    			<input type="text" class="col-sm-12 col-lg-9 form-control" id="username" placeholder="Ingresá tu username..." th:field="*{username}" required>
+							  					</div>
+							  				</div>
+									  	</div>
+									  	<div class="col-sm-12 form-group">
+									  		<div class="container">
+							  					<div class="row">
+							  						<label class="col-sm-12 col-lg-3 text-center" for="apellido">APELLIDO:</label>
+									    			<input type="text" class="col-sm-12 col-lg-9 form-control" id="apellido" placeholder="Ingresá tu apellido..." th:field="*{apellido}" required>
+							  					</div>
+							  				</div>
+									  	</div>
+									  	<div class="col-sm-12 form-group">
+							  				<div class="container">
+							  					<div class="row">
+							  						<label class="col-sm-12 col-lg-3 text-center" for="nombre">NOMBRE:</label>
+									    			<input type="text" class="col-sm-12 col-lg-9 form-control" id="nombre" placeholder="Ingresá tu nombre..." th:field="*{nombre}" required>
+							  					</div>
+							  				</div>
+									  	</div>
+									  	<div class="col-sm-12 form-group">
+									  		<div class="container">
+							  					<div class="row">
+							  						<label class="col-sm-12 col-lg-3 text-center" for="email">E-MAIL:</label>
+									    			<input type="email" class="col-sm-12 col-lg-9 form-control" id="email" placeholder="Ingresá tu correo electrónico..." th:field="*{email}" required>
+							  					</div>
+							  				</div>
+									  	</div>
+									  	<!--  
+									  	<div class="col-sm-12 form-group">
+									  		<div class="container">
+							  					<div class="row">
+							  						<label class="col-sm-12 col-lg-3 text-center" for="password">CONTRASEÑA:</label>
+									    			<input type="password" class="col-sm-12 col-lg-9 form-control" id="password" placeholder="Ingresá tu contraseña..." th:field="*{password}">
+							  					</div>
+							  				</div>
+									  	</div> -->
+									  	
+									  	<div class="col-sm-12 form-group">
+									  		<div class="container">
+							  					<div class="row">
+							  						<label class="col-sm-12 col-lg-3 text-center" for="tipo">CODE ADMIN:</label>
+									    			<input type="password" class="col-sm-12 col-lg-8 form-control" id="tipo" placeholder="(Opcional) Ingresá el código..." th:field="*{tipo}">
+							  						
+													<!-- BUTTON INFO -->
+													<button type="button" class="btn btn-info col-sm-12 col-lg-1" data-toggle="modal" data-target="#modalInfo">
+  														<i class="fas fa-info"></i>
+													</button>											
+							  					</div>
+							  				</div>
+									  	</div>
+									  	
+									  	<div th:if="${mensajeError}" class="col-sm-12 my-3">
+									  		<div class="container">
+									  			<div class="row">
+									  				<div th:text="${mensajeError}" class="alert alert-danger col-sm-12 text-center" role="alert"></div>
+									  			</div>
+									  		</div>
+							  			</div>
+									  	
+									  	
+									  	<!-- BOTONES -->
+									  	<div class="col-sm-12 form-group mt-3">
+									  		<div class="container">
+							  					<div class="row d-flex justify-content-center">
+							  						<a type="button" class="col-sm-12 col-lg-3 btn btn-danger m-1" th:href="@{/cancelarEdit}">
+							  							<i class="fas fa-times"></i> &nbsp; CANCELAR
+							  						</a>
+							  						<button type="button" class="col-sm-12 col-lg-3 btn btn-primary m-1" data-toggle="modal" data-target="#modalAgregar">
+							  							<i class="far fa-save"></i> &nbsp; GUARDAR
+							  						</button>
+							  					</div>
+							  				</div>
+									  	</div>
+									  	
+									  	<!-- Modal Agregar -->
+										<div class="modal fade" id="modalAgregar" tabindex="-1"	role="dialog" aria-labelledby="agregarModalTitulo"	aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<!-- <h5 class="modal-title h4" id="agregarModalTitulo">Confirmar Cambios</h5> -->
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body">
+														<h6 class="text-center m-auto text-uppercase font-weight-normal h4 py-4">¿Guardar los cambios?</h6>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary"	data-dismiss="modal">Cerrar</button>
+														<input type="submit" class="btn btn-primary" value="Guardar Cambios"  th:value="${editMode}?'Crear Usuario':'Guardar Cambios'">
+													</div>
+												</div>
+											</div>
+										</div>
+							  		</div>
+								</form>
+								
+								
+					  		</div>
+  				</div>
+  			</div>
+		</div>
+		
+		<!-- Footer -->
+		<div th:insert="layout/footer :: footer-principal"></div> 
+
+	    <!-- Optional JavaScript -->
+	    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+		<script th:src="@{/webjars/popper.js/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"	src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		
+	    <!--  
+	    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+  	</body>
+</html>

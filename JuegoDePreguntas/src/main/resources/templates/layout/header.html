@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="sp" xmlns:th="http://www.thymeleaf.org">
+  	<head>
+  	
+  		<meta name="author" content="Gonzalez Brian leonel">
+  		
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" th:href="@{webjars/bootstrap/css/bootstrap.min.css}">
+		    
+		<!-- FontAwesome -->
+		<link th:rel="stylesheet" th:href="@{webjars/font-awesome/css/all.css}">
+		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+
+	</head>
+	<body>
+	
+		<div id="header-principal" th:fragment="header-principal">
+			<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top m-0">
+				<div class="container d-flex justify-content-center align-items-center">
+				 	<button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+				    	<span class="navbar-toggler-icon"></span>
+				  	</button>
+				  	
+				  	<a class="navbar-brand h1 m-auto font-weight-bold d-flex align-items-center" href="#" style="font-size: 1.5em">
+					 	<img src="img/logo.png" width="60" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+					    WHATS UP?
+					</a>
+				
+					<div class="collapse navbar-collapse mx-3" id="navbarToggler">
+						<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					      	<li class="nav-item active">
+					        	<a class="nav-link" href="#">Home</a>
+					      	</li>
+					      	<li class="nav-item active">
+					      		<a class="nav-link" href="#">Un Link</a>
+					      	</li>
+					      	<li class="nav-item active">
+					        	<a class="nav-link" href="#">Otro Link</a>
+					      	</li>
+						</ul>
+					    <form class="form-inline my-2 my-lg-0">
+					      	<a class="form-control mr-sm-2 btn btn-outline-primary my-2 my-sm-0" th:href="@{/login}">
+					      		<i class="fas fa-sign-in-alt"></i>&nbsp;INGRESAR
+					      	</a>
+					    </form>
+					</div>
+				</div>
+			</nav>
+		</div>
+		
+		<!-- Header ya logueado -->
+		<div id="header-signup" th:fragment="header-signup">
+			<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top m-0">
+				<div class="container d-flex justify-content-center align-items-center">
+				 	<button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+				    	<span class="navbar-toggler-icon"></span>
+				  	</button>
+				  	
+				  	<a class="navbar-brand h1 m-auto font-weight-bold d-flex align-items-center" href="#" style="font-size: 1.5em">
+					 	<img src="img/logo.png" width="60" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+					    WHATS UP?
+					</a>
+				
+					<div class="collapse navbar-collapse mx-3" id="navbarToggler">
+						<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					      	<li class="nav-item active">
+					        	<a class="nav-link" href="#">Home</a>
+					      	</li>
+					      	<li class="nav-item">
+					      		<a class="nav-link" href="#">Un Link</a>
+					      	</li>
+					      	<li class="nav-item">
+					      		<a class="nav-link" th:href="@{/categorias}">Categorías</a>
+					      	</li>
+					      	<li class="nav-item dropdown">
+						        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						         	Preguntas
+						        </a>
+						        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						          	<a class="dropdown-item" th:href="@{/preguntaForm}">Nuevo Pregunta</a>
+						          	<a class="dropdown-item" th:href="@{/misPreguntas}">Mis Preguntas</a>
+						        </div>
+						   	</li>
+					      	<li class="nav-item">
+					      		<a class="nav-link" th:href="@{/newJugador}">Jugadores</a>
+					      	</li>
+						</ul>
+					    <form class="form-inline my-2 my-lg-0">
+					      	<a class="form-control mr-sm-2 btn btn-danger my-2 my-sm-0" href="#" th:href="@{/logout}">
+		                		<i class="fas fa-sign-out-alt"></i> &nbsp; Cerrar Sesión
+		                	</a>
+					    </form>
+					</div>
+				</div>
+			</nav>
+		</div>
+		
+		<!-- NAVBAR USER ADMIN -->
+		<div id="header-admin" th:fragment="header-admin">
+			<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark m-0">
+				<div class="container d-flex justify-content-center align-items-center">
+				 	<button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+				    	<span class="navbar-toggler-icon"></span>
+				  	</button>
+				  	
+				  	<a class="navbar-brand h1 m-auto font-weight-bold d-flex align-items-center" href="#" style="font-size: 1.5em">
+					 	<img src="img/logo.png" width="60" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+					    WHATS UP?
+					</a>
+				
+					<div class="collapse navbar-collapse mx-3" id="navbarToggler">
+						<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					      	<li class="nav-item">
+					        	<a class="nav-link" th:href="@{/home}">Home</a>
+					      	</li>
+					      	<li class="nav-item">
+					      		<a class="nav-link" th:href="@{/categoriasAdmin}">Categorías</a>
+					      	</li>
+					      	<li class="nav-item dropdown">
+						        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						         	Preguntas
+						        </a>
+						        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						          	<a class="dropdown-item" th:href="@{/preguntaForm}">Nueva Pregunta</a>
+						          	<a class="dropdown-item" th:href="@{/misPreguntas}">Mis Preguntas</a>
+						          	<a class="dropdown-item" th:href="@{/preguntasAdmin}">Mostrar Preguntas</a>
+						          	<a class="dropdown-item" th:href="@{/buscarPreguntas}">Buscar Preguntas</a>
+						        </div>
+						   	</li>
+					      	<li class="nav-item dropdown">
+						        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						         	Jugadores
+						        </a>
+						        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						          	<a class="dropdown-item" th:href="@{/newJugador}">Nuevo Jugador</a>
+						          	<a class="dropdown-item" th:href="@{/jugadores}">Mostrar Jugadores</a>
+						        </div>
+						   	</li>
+					      	<li class="nav-item dropdown">
+						        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						         	Usuarios
+						        </a>
+						        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						          	<a class="dropdown-item" th:href="@{/userForm}">Nuevo Usuario</a>
+						          	<a class="dropdown-item" th:href="@{/allUser}">Ver Usuarios</a>
+						        </div>
+						   	</li>
+						</ul>
+					    <form class="form-inline my-2 my-lg-0">
+					      	<a class="form-control mr-sm-2 btn btn-danger my-2 my-sm-0" href="#" th:href="@{/logout}">
+		                		<i class="fas fa-sign-out-alt"></i> &nbsp; Cerrar Sesión
+		                	</a>
+					    </form>
+					</div>
+				</div>
+			</nav>
+		</div>
+		
+		<!-- NAVBAR USER ADMIN -->
+		<div id="header-admin-bienvenida" th:fragment="header-admin-bienvenida">
+			<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top m-0">
+				<div class="container d-flex justify-content-center align-items-center">
+				 	<button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+				    	<span class="navbar-toggler-icon"></span>
+				  	</button>
+				  	
+				  	<a class="navbar-brand h1 m-auto font-weight-bold d-flex align-items-center" href="#" style="font-size: 1.5em">
+					 	<img src="img/logo.png" width="60" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+					    WHATS UP?
+					</a>
+				
+					<div class="collapse navbar-collapse mx-3" id="navbarToggler">
+						<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					      	<li class="nav-item">
+					        	<a class="nav-link" th:href="@{/home}">Home</a>
+					      	</li>
+					      	<li class="nav-item">
+					      		<a class="nav-link" th:href="@{/categoriasAdmin}">Categorías</a>
+					      	</li>
+					      	<li class="nav-item dropdown">
+						        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						         	Preguntas
+						        </a>
+						        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						          	<a class="dropdown-item" th:href="@{/preguntaForm}">Nuevo Pregunta</a>
+						          	<a class="dropdown-item" th:href="@{/misPreguntas}">Mis Preguntas</a>
+						          	<a class="dropdown-item" th:href="@{/preguntasAdmin}">Mostrar Preguntas</a>
+						          	<a class="dropdown-item" th:href="@{/buscarPreguntas}">Buscar Preguntas</a>
+						        </div>
+						   	</li>
+					      	<li class="nav-item dropdown">
+						        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						         	Jugadores
+						        </a>
+						        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						          	<a class="dropdown-item" th:href="@{/newJugador}">Nuevo Jugador</a>
+						          	<a class="dropdown-item" th:href="@{/jugadores}">Mostrar Jugadores</a>
+						        </div>
+						   	</li>
+					      	<li class="nav-item dropdown">
+						        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						         	Usuarios
+						        </a>
+						        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						          	<a class="dropdown-item" th:href="@{/userForm}">Nuevo Usuario</a>
+						          	<a class="dropdown-item" th:href="@{/allUser}">Ver Usuarios</a>
+						        </div>
+						   	</li>
+						</ul>
+					    <form class="form-inline my-2 my-lg-0">
+					      	<a class="form-control mr-sm-2 btn btn-danger my-2 my-sm-0" href="#" th:href="@{/logout}">
+		                		<i class="fas fa-sign-out-alt"></i> &nbsp; Cerrar Sesión
+		                	</a>
+					    </form>
+					</div>
+				</div>
+			</nav>
+		</div>
+		
+		<!-- Header AUTOR -->
+       	<div id="header-autor" th:fragment="header-autor">
+       	
+	       	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+	       		<div class="container d-flex justify-content-center align-items-center">
+	       			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+	                	<span class="navbar-toggler-icon"></span>
+	            	</button>
+	            	
+	       			<a class="navbar-brand h1 m-auto font-weight-bold d-flex align-items-center" href="#" style="font-size: 1.5em">
+					 	<img src="img/logo.png" width="60" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+					    WHATS UP?
+					</a>
+				
+					<div class="collapse navbar-collapse mx-3" id="navbarToggler">
+						<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					      	<li class="nav-item active">
+					        	<a class="nav-link" href="#">Home</a>
+					      	</li>
+					      	<li class="nav-item">
+					      		<a class="nav-link" href="#">Un Link</a>
+					      	</li>
+					      	<li class="nav-item">
+					      		<a class="nav-link" th:href="@{/categorias}">Categorías</a>
+					      	</li>
+					      	<li class="nav-item dropdown">
+						        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						         	Preguntas
+						        </a>
+						        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						          	<a class="dropdown-item" th:href="@{/preguntaForm}">Nuevo Pregunta</a>
+						          	<a class="dropdown-item" th:href="@{/misPreguntas}">Mis Preguntas</a>
+						        </div>
+						   	</li>
+						   	<li class="nav-item">
+					      		<a class="nav-link" th:href="@{/newJugador}">Jugadores</a>
+					      	</li>
+					      	
+						</ul>
+					    <form class="form-inline my-2 my-lg-0">
+					      	<a class="form-control mr-sm-2 btn btn-danger my-2 my-sm-0" href="#" th:href="@{/logout}">
+		                		<i class="fas fa-sign-out-alt"></i> &nbsp; Cerrar Sesión
+		                	</a>
+					    </form>
+					</div>
+  					
+  					
+	       		</div>
+			</nav>
+       	
+       	</div>
+		
+
+	    <!-- Optional JavaScript -->
+	    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+		<script th:src="@{/webjars/popper.js/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"	src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		
+	    <!--  
+	    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+  	</body>
+</html>

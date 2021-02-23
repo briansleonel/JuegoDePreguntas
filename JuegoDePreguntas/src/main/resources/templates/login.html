@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="sp" xmlns:th="http://www.thymeleaf.org">
+  	<head>
+  		
+  		<meta name="author" content="Gonzalez Brian leonel">
+  		
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Bootstrap CSS -->
+		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		    
+		<!-- FontAwesome -->
+		<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}">
+		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+		
+		<title>Iniciar Sesión</title>
+	</head>
+	<body class="" id="container-login">
+	
+		<div class="container-fluid">
+			<div class="row d-flex justify-content-center align-items-center vh-100">
+				<div class="card col-lg-3 col-sm-5 container">
+				 	<div class="card-body row">
+				    	<h5 class="card-title h4 mx-auto mb-4 col-sm-12 text-center">INICIAR SESIÓN</h5>
+				    	
+				    	<form th:action="@{/login}" class="m-0 container " method="post">
+				    	<div class="row d-flex justify-content-center align-items-center">
+				    	
+				    		<!-- Ingreso de nombre de usuario -->
+				    		<div class="col-sm-12 px-4 py-1">
+				    			<label class="sr-only" for="nombreUsuario">Nombre de usuario</label>
+			  					<div class="input-group mb-2 mr-sm-2">
+							    	<div class="input-group-prepend">
+							      		<div class="input-group-text">
+							      			<i class="fa fa-user" aria-hidden="true"></i>
+							      		</div>
+							    	</div>
+							    	<input type="text" class="form-control form-login font-italic mx-0" id="nombreUsuario" placeholder="Tu nombre de usuario" name="nombreUsuario" required="required">
+							  	</div>
+				    		</div>
+				    	
+						  	<!-- Ingreso de password -->
+						  	<div class="col-sm-12 px-4 py-1">
+						  		<label class="sr-only" for="password">Contraseña</label>
+			  					<div class="input-group mb-2 mr-sm-2 my-3">
+							    	<div class="input-group-prepend">
+							      		<div class="input-group-text">
+							      			<i class="fa fa-lock" aria-hidden="true"></i>
+							      		</div>
+							    	</div>
+							    	<input type="password" class="form-control form-login mx-0 font-italic" id="password" placeholder="Tu contraseña" name="password" required="required">
+							  	</div>
+						  	</div>
+						  	
+						  	<div th:if="${param.error}" class="alert alert-danger col-sm-12 mt-1 mb-0 text-center font-weight-lighter" role="alert">
+				    			¡NOMBRE DE USUARIO O CONTRASEÑA NO VÁLIDOS!
+				    		</div>
+							<div th:if="${param.logout}" class="alert alert-success col-sm-12 mt-1 mb-0 text-center font-weight-lighter" role="alert">
+								¡SESIÓN CERRADA CON ÉXITO!
+							</div>
+						  	
+						  	<div class="mt-3 col-sm-12 row px-4 py-1">
+						  		<button type="submit" class="btn btn-outline-primary botonLog col-sm-12 mx-0">
+									<i class="fas fa-sign-in-alt"></i>&nbsp; Ingresar 
+						  		</button>
+						  	</div>
+						</div>  	
+				    	</form>
+				    	
+			    	</div>
+			  	</div>
+			</div>
+		</div>
+
+	    <!-- Optional JavaScript -->
+	    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+		<script th:src="@{/webjars/popper.js/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"	src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		
+	    <!--  
+	    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+  	</body>
+</html>

@@ -1,0 +1,28 @@
+/**
+ * 
+ */
+package brians.game.utils;
+
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
+
+/**
+ * @author Gonzalez Brian Leonel
+ *
+ */
+
+@Component
+public class UserName {
+
+	public String extraerNombreUsuario() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+		if (principal instanceof UserDetails) {
+		  return ((UserDetails)principal).getUsername();
+		} else {
+		  return principal.toString();
+		}
+	}
+	
+}

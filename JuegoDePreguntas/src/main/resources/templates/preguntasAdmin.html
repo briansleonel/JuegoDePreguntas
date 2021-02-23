@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="sp" xmlns:th="http://www.thymeleaf.org">
+  	<head>
+  		
+  		<meta name="author" content="Gonzalez Brian leonel">
+  		
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Bootstrap CSS -->
+		<link th:rel="stylesheet" th:href="@{webjars/bootstrap/css/bootstrap.min.css}">
+		    
+		<!-- FontAwesome -->
+		<link th:rel="stylesheet" th:href="@{webjars/font-awesome/css/all.css}">
+		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+		
+		<title>Preguntas Admin</title>
+	</head>
+	<body>
+		
+		<!-- NavBar -->
+		<div th:insert="layout/header :: ${navbar}" class="sticky-top"></div>
+		
+		<div class="container-fluid d-flex justify-content-center my-5">
+		
+			<div class="card" style="width: 80vw;">
+			  	<div class="card-body">
+					
+					<ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+					  	<li class="nav-item" role="presentation">
+					    	<a class="nav-link" id="agregarPregunta-tab" data-toggle="tab" href="#agregarPregunta" role="tab" aria-controls="agregarPregunta" aria-selected="true">AGREGAR PREGUNTA</a>
+					  	</li>
+					  	<li class="nav-item" role="presentation">
+					    	<a class="nav-link" id="verPregunta-tab" data-toggle="tab" href="#verPregunta" role="tab" aria-controls="profile" aria-selected="false">VER PREGUNTAS</a>
+					  	</li>
+					  	<li class="nav-item" role="presentation">
+					    	<a class="nav-link" id="verPreguntaUsuario-tab" data-toggle="tab" href="#verPreguntaUsuario" role="tab" aria-controls="profile" aria-selected="false">PREGUNTAS POR JUGADOR</a>
+					  	</li>
+					  	<li class="nav-item" role="presentation">
+					    	<a class="nav-link" id="misPreguntas-tab" data-toggle="tab" href="#misPreguntas" role="tab" aria-controls="profile" aria-selected="false">MIS PREGUNTAS</a>
+					  	</li>
+					</ul>
+					<div class="tab-content" id="myTabContent">
+					
+						<!-- AGREGAR JUGADOR -->
+					  	<div class="tab-pane fade show container" id="agregarPregunta" role="tabpanel" aria-labelledby="agregarPregunta-tab">
+					  		<div class="row">
+					  			<div class="col-sm-10 container mx-auto my-4">
+					  				<div class="row">
+					  					<h3 class="h3 text-center mx-auto my-2">REGISTRAR PREGUNTA</h3>
+					  					<p class="col-sm-10 text-center mx-auto my-2 text-black-50">
+					  						Aquí puede registrar una pregunta. <br>
+					  						Formule bien su pregunta, o el administrador lo eliminará.
+					  					</p>
+					  				</div>
+					  			</div>
+							  	<form class="col-sm-10 container m-auto" th:object="${preguntaForm}" th:action="@{/preguntasAdmin}" method="post">
+							  		<div class="row">
+							  			<div class="col-sm-12 form-group">
+									  		<div class="container">
+							  					<div class="row">
+							  						<label class="col-sm-12 col-lg-3 text-center" for="pregunta">PREGUNTA:</label>
+									    			<!-- <input type="text" class="col-sm-12 col-lg-9 form-control" id="pregunta" placeholder="Ingresá tu pregunta..." th:field="*{pregunta}" required> -->
+							  						<textarea rows="2" class="col-sm-12 col-lg-9 form-control" id="pregunta" placeholder="Ingresá tu pregunta..." th:field="*{pregunta}"></textarea>
+							  					</div>
+							  				</div>
+									  	</div>
+									  	<div class="col-sm-12 form-group">
+									  		<div class="container">
+							  					<div class="row">
+							  						<label class="col-sm-12 col-lg-3 text-center" for="rtaCorrecta">RESPUESTA CORRECTA:</label>
+									    			<!-- <input type="text" class="col-sm-12 col-lg-9 form-control" id="apellido" placeholder="Ingresá tu apellido..." th:field="*{apellido}" required> -->
+							  						<textarea rows="2" class="col-sm-12 col-lg-9 form-control" id="rtaCorrecta" placeholder="Ingresá la respuesta correcta..." th:field="*{correcta}"></textarea>
+							  					</div>
+							  				</div>
+									  	</div>
+									  	<div class="col-sm-12 form-group">
+							  				<div class="container">
+							  					<div class="row">
+							  						<label class="col-sm-12 col-lg-3 text-center" for="opcion1">OPCIÓN 1:</label>
+									    			<!-- <input type="text" class="col-sm-12 col-lg-9 form-control" id="nombre" placeholder="Ingresá tu nombre..." th:field="*{nombre}" required> -->
+							  						<textarea rows="2" class="col-sm-12 col-lg-9 form-control" id="opcion1" placeholder="Ingresá la opción 1..." th:field="*{opcion1}"></textarea>
+							  					</div>
+							  				</div>
+									  	</div>
+									  	<div class="col-sm-12 form-group">
+							  				<div class="container">
+							  					<div class="row">
+							  						<label class="col-sm-12 col-lg-3 text-center" for="opcion2">OPCIÓN 2:</label>
+									    			<!-- <input type="text" class="col-sm-12 col-lg-9 form-control" id="nombre" placeholder="Ingresá tu nombre..." th:field="*{nombre}" required> -->
+							  						<textarea rows="2" class="col-sm-12 col-lg-9 form-control" id="opcion2" placeholder="Ingresá la opción 2..." th:field="*{opcion2}"></textarea>
+							  					</div>
+							  				</div>
+									  	</div>
+									  	<div class="col-sm-12 form-group">
+							  				<div class="container">
+							  					<div class="row">
+							  						<label class="col-sm-12 col-lg-3 text-center" for="opcion3">OPCIÓN 3:</label>
+									    			<!-- <input type="text" class="col-sm-12 col-lg-9 form-control" id="nombre" placeholder="Ingresá tu nombre..." th:field="*{nombre}" required> -->
+							  						<textarea rows="2" class="col-sm-12 col-lg-9 form-control" id="opcion3" placeholder="Ingresá la opción 3..." th:field="*{opcion3}"></textarea>
+							  					</div>
+							  				</div>
+									  	</div>
+									  	<div class="col-sm-12 form-group">
+							  				<div class="container">
+							  					<div class="row">
+							  						<label class="col-sm-12 col-lg-3 text-center" for="categoria">SELECCIONE CATEGORIA:</label>
+							  						<select class="custom-select col-sm-12" id="" th:field="*{categoria.nombre}" required>
+													        <option selected disabled value="---------------------------" >---------------------------</option>
+													        <option th:each="categoria : ${categorias}"
+													        	th:text="${categoria.nombre}"
+													        	th:value="${categoria.nombre}"
+													        ></option>
+												    </select>
+							  					</div>
+							  				</div>
+									  	</div>
+									  	
+									  	<div th:if="${mensajeError}" class="col-sm-12 my-3">
+									  		<div class="container">
+									  			<div class="row">
+									  				<div th:text="${mensajeError}" class="alert alert-danger col-sm-12 text-center" role="alert"></div>
+									  			</div>
+									  		</div>
+							  			</div>
+									  	
+									  	
+									  	<!-- BOTONES -->
+									  	<div class="col-sm-12 form-group mt-3">
+									  		<div class="container">
+							  					<div class="row d-flex justify-content-center">
+							  						<button type="button" class="col-sm-12 col-lg-3 btn btn-danger m-1">
+							  							<i class="fas fa-times"></i> &nbsp; CANCELAR
+							  						</button>
+							  						<button type="button" class="col-sm-12 col-lg-3 btn btn-primary m-1" data-toggle="modal" data-target="#modalAgregar">
+							  							<i class="fas fa-user-plus"></i> &nbsp; GUARDAR
+							  						</button>
+							  					</div>
+							  				</div>
+									  	</div>
+									  	
+									  	<!-- Modal Agregar -->
+										<div class="modal fade" id="modalAgregar" tabindex="-1"	role="dialog" aria-labelledby="agregarModalTitulo"	aria-hidden="true">
+											<div class="modal-dialog modal-dialog-centered" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<!-- <h5 class="modal-title" id="agregarModalTitulo">Confirmar Agregar</h5> -->
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+													</div>
+													<div class="modal-body">
+														<h6 class="text-center m-auto text-uppercase font-weight-normal h4 py-4">¿Desea agregar la nueva pregunta?</h6>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-secondary"	data-dismiss="modal">Cerrar</button>
+														<input type="submit" class="btn btn-primary" value="Save Changes"  th:value="${editMode}?'Guardar Usuario':'GUARDAR'">
+													</div>
+												</div>
+											</div>
+										</div>
+							  		</div>
+								</form>
+								
+								
+					  		</div>
+					  	</div>
+					  	
+					  	<!-- VER JUGADORES -->
+					  	<div class="tab-pane fade show container" id="verPregunta" role="tabpanel" aria-labelledby="verPregunta-tab" style="min-height: 23em" >
+					  		<div class="row">
+					  			<div class="col-sm-10 container mx-auto my-4">
+					  				<div class="row">
+					  					<h3 class="h3 text-center mx-auto my-2">VER PREGUNTAS</h3>
+					  				</div>
+					  			</div> 
+					  			
+					  			<div th:if="${msgActivo}" class="col-sm-12 my-2">
+									<div class="container">
+										<div class="row">
+									  		<div th:text="${msgActivo}" class="alert alert-danger col-sm-12 text-center" role="alert"></div>
+									  	</div>
+									</div>
+							  	</div>
+							  	<!-- 
+							  	<div th:if="${agregarJug}" class="col-sm-12 my-2">
+									<div class="container">
+										<div class="row">
+									  		<div th:text="${agregarJug}" class="alert alert-primary col-sm-12 text-center" role="alert"></div>
+									  	</div>
+									</div>
+							  	</div> -->
+					  			
+					  			<div class="col-sm-12 mt-2 table-responsive">
+						  			<table class="table table-hover text-center table-sm">
+										<thead class="thead-dark">
+										    <tr>
+											      <th>ID</th>
+											      <th>Pregunta</th>
+											      <th>Correcta</th>
+											      <th>Opción 1</th>
+											      <th>Opción 2</th>
+											      <th>Opción 3</th>
+											      <th>Categoría</th>
+											      <th>Autor</th>
+											      <th>Activo</th>
+											      <th>Acciones</th>
+										    </tr>
+										</thead> 
+										<tbody>
+										    <tr th:each="pregunta : ${preguntasList}">
+											      <th th:text="${pregunta.id}"></th>
+											      <td th:text="${pregunta.pregunta}"></td>
+											      <td th:text="${pregunta.correcta}"></td>
+											      <td th:text="${pregunta.opcion1}"></td>
+											      <td th:text="${pregunta.opcion2}"></td>
+											      <td th:text="${pregunta.opcion3}"></td>
+											      <td th:text="${pregunta.categoria.nombre}"></td>
+											      <td th:text="${pregunta.usuario.username}"></td>
+											      <td th:text="${pregunta.estado}"></td>
+											      <td class="d-flex justify-content-center">
+											      	<a th:href="@{/editarPregunta/}+${pregunta.id}" class="btn btn-info btn-sm m-auto">
+											      		<!-- <svg class="bi bi-pencil" width="1.2em" height="1.2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+										  					<path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
+										  					<path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
+														</svg> -->
+											      		<i class="fas fa-user-edit"></i>
+											      	</a>
+											      	
+											      	<a th:onclick="'javascript:confirmarBloquearPregunta(\''+${pregunta.id}+'\');'" data-toggle="modal" data-target="#bloquearPregunta" th:href="@{/bloquearPregunta/}+${pregunta.id}" class="btn btn-danger btn-sm m-auto">
+											      		<i class="fas fa-user-minus"></i>
+											      	</a>
+											      	
+											      	<a th:onclick="'javascript:confirmarHabilitarPregunta(\''+${pregunta.id}+'\');'" data-toggle="modal" data-target="#habilitarPregunta" th:href="@{/habilitarPregunta/}+${pregunta.id}" class="btn btn-success btn-sm m-auto">
+											      		<i class="fas fa-user-plus"></i>
+											      	</a>
+											      	
+											      </td>
+										    </tr>
+										 </tbody>
+									</table>
+						  		</div>
+					  		</div>
+							
+							<!-- 	VENTANA MODAL DE CONFIRMACION ELIMINAR USUARIO -->	
+							<div class="modal fade" id="bloquearPregunta" tabindex="-1" role="dialog" aria-labelledby="bloquearPreguntaModal"	aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<!-- <h5 class="modal-title h4" id="eliminarUsuarioModal">Confirmar Eliminar</h5> -->
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<h6 class="text-center m-auto text-uppercase font-weight-normal h4 py-4">¿Esta seguro de Inhabilitar esta Pregunta?</h6>
+										</div>
+										<input type="hidden" id="identificadorPreguntaHiddenInput" name="userIdHiddenInput"/>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"	data-dismiss="modal">CERRAR</button>
+											<button type="button" class="btn btn-primary" th:onclick="bloquearPregunta()">INHABILITAR</button>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+							
+							<!-- 	VENTANA MODAL DE CONFIRMACION HABILITAR USUARIO -->	
+							<div class="modal fade" id="habilitarPregunta" tabindex="-1" role="dialog" aria-labelledby="habilitarPreguntaModal"	aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<!-- <h5 class="modal-title h4" id="eliminarUsuarioModal">Confirmar Eliminar</h5> -->
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<h6 class="text-center m-auto text-uppercase font-weight-normal h4 py-4">¿Esta seguro de habilitar este JUGADOR?</h6>
+										</div>
+										<input type="hidden" id="identificadorPreguntaHiddenInput" name="userIdHiddenInput"/>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"	data-dismiss="modal">CERRAR</button>
+											<button type="button" class="btn btn-primary" th:onclick="habilitarPregunta()">HABILITAR</button>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+							
+							<!-- Script -->
+							<script type="text/javascript">
+								function confirmarBloquearPregunta(id){
+									$('#modalEliminar').modal('show');
+									$("#identificadorPreguntaHiddenInput").val(id);
+								}
+									
+								function bloquearPregunta(){
+									var id = $("#identificadorPreguntaHiddenInput").val();
+									window.location = "bloquearPregunta/"+id;
+								}
+								
+								function confirmarHabilitarPregunta(id){
+									$('#modalEliminar').modal('show');
+									$("#identificadorPreguntaHiddenInput").val(id);
+								}
+									
+								function habilitarPregunta(){
+									var id = $("#identificadorPreguntaHiddenInput").val();
+									window.location = "habilitarPregunta/"+id;
+								}
+							</script>
+									
+					  	</div>
+					</div>
+				    
+			  	</div>
+			</div>
+  
+		</div>
+		
+		<!-- Footer -->
+		<div th:insert="layout/footer :: footer-principal"></div> 
+
+	    <!-- Optional JavaScript -->
+	    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+		<script th:src="@{/webjars/popper.js/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"	src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		
+	    <!--  
+	    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+  	</body>
+</html>

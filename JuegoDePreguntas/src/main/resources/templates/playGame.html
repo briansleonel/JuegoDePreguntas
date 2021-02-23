@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="sp" xmlns:th="http://www.thymeleaf.org">
+  	<head>
+  		
+  		<meta name="author" content="Gonzalez Brian leonel">
+  		
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Bootstrap CSS -->
+		<link th:rel="stylesheet" th:href="@{webjars/bootstrap/css/bootstrap.min.css}">
+		    
+		<!-- FontAwesome -->
+		<link th:rel="stylesheet" th:href="@{webjars/font-awesome/css/all.css}">
+		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		
+		<title>Cargando</title>
+	</head>
+	<body style="width: 100vw; height: 100vh;">
+		
+		<!-- NavBar 
+		<div th:insert="layout/header :: ${navbar}" class="m-0 p-0"></div> -->
+		
+		<!-- 
+		<div class="container-fluid m-0">
+			<div class="vh-100 row m-0 p-0 d-flex justify-content-center align-items-center">
+				<div class="alert alert-light m-0 p-4 col-sm-5 row animated fadeInDown" role="alert">
+					<div class="col-sm-12 row d-flex justify-content-center align-items-center m-0 p-4">
+						<h2 class="alert-heading text-center h1 m-0">¡Bienvenido <span th:text="${#authentication.getPrincipal().getUsername()}"></span>!</h2>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		
+		<div style="height: 100vh; width: 100vw;" class="d-flex justify-content-center align-items-center p-0 m-0">
+		
+		<div class="container-fluid d-flex justify-content-center align-items-center p-0 m-0">
+			<div class="card my-3" style="width: 35em;">
+  				<div class="card-body container">
+  					<div class="row d-flex justify-content-center">
+						<!-- <div class="spinner-border text-secondary" style="width: 5rem; height: 5rem;" role="status">
+	  						<span class="sr-only">Loading...</span>
+						</div> -->
+						<div class="col-sm-12 mt-3 d-flex justify-content-center">
+						  	<strong style="font-size: 3.5em" class="text-dark font-weight-normal">Cargando...</strong> &nbsp; &nbsp; &nbsp; &nbsp;
+						  	<div class="spinner-border text-dark m-0" role="status" aria-hidden="true" style="width: 5rem; height: 5rem;"></div>
+						</div>
+						
+						<div class="col-sm-12 text-center mt-4 mx-auto">
+							<h6 id='CuentaAtras' class="mt-3 mx-auto mb-2 h5 font-weight-light"></h6>
+						</div>
+					</div>
+  				</div>
+			</div>
+			
+		</div>
+		
+		</div>
+		
+		<script language="JavaScript">
+ 
+		    /* Determinamos el tiempo total en segundos */
+		    var totalTiempo=5;
+		    /* Determinamos la url donde redireccionar */
+		    var url="/jugar";
+		 
+		    function updateReloj()
+		    {
+		        document.getElementById('CuentaAtras').innerHTML = "Redireccionando en "+totalTiempo+" segundos";
+		 
+		        if(totalTiempo==0)
+		        {
+		            window.location=url;
+		        }else{
+		            /* Restamos un segundo al tiempo restante */
+		            totalTiempo-=1;
+		            /* Ejecutamos nuevamente la función al pasar 1000 milisegundos (1 segundo) */
+		            setTimeout("updateReloj()",1000);
+		        }
+		    }
+		 
+		    window.onload=updateReloj;
+ 
+    </script>
+			
+		
+		<!-- Footer
+		<div th:insert="layout/footer :: footer-info" class="m-0 p-0"></div> -->
+		
+		
+		
+
+	    <!-- Optional JavaScript -->
+	    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+		<script th:src="@{/webjars/popper.js/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"	src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		
+	    <!--  
+	    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+  	</body>
+</html>

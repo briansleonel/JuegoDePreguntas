@@ -1,0 +1,85 @@
+*{
+ 	/* border: 1px solid black; */
+}
+body{
+	background: url(../img/fondo.jpg) no-repeat center center fixed; 
+	background-size: cover;
+	position: relative;
+}
+
+body:before{
+	content: '';
+    position: absolute;
+    background-color: rgba( 0, 0, 0, 0 );
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#container-login{
+	background: url("../img/fondoLogin.jpg") no-repeat center center fixed;
+	background-size: cover;
+	position: relative;
+}
+
+.input-group{
+	border-left: none !important;
+	border-right: none !important;
+	border-top: none !important;
+	border-bottom: 1px solid #6c757d !important;
+	background-color: white !important; 
+}
+
+.input-group-text{
+	border: none !important;
+	background-color: white !important;
+	color: #202c39 !important;
+}
+
+.form-login{
+	border: none;
+}
+
+.form-login:focus{
+	outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.form-login:after{
+	background-color: white;
+}
+
+.form-login:selection{
+	background-color: white;
+}
+
+#cont-log{
+	background-color: white;
+	min-height: 10em;
+}
+
+.botonLog{
+	color: #6f2dbd !important;
+    border-color: #6f2dbd !important;
+}
+.botonLog:hover {
+	background-color: #6f2dbd !important;
+	color: white !important;
+}
+
+.seccion-preg{
+	color: #6f2dbd !important;
+    border-color: #6f2dbd !important;
+}
+.seccion-preg:hover {
+	background-color: #6f2dbd !important;
+	color: white !important;
+}
+.seccion-preg::selection {
+	background-color: #6f2dbd !important;
+	color: white !important;
+}

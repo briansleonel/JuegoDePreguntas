@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="sp" xmlns:th="http://www.thymeleaf.org">
+  	<head>
+  		
+  		<meta name="author" content="Gonzalez Brian leonel">
+  		
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Bootstrap CSS -->
+		<link th:rel="stylesheet" th:href="@{webjars/bootstrap/css/bootstrap.min.css}">
+		    
+		<!-- FontAwesome -->
+		<link th:rel="stylesheet" th:href="@{webjars/font-awesome/css/all.css}">
+		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		
+		<title>Seleccionar Jugador</title>
+	</head>
+	<body>
+		
+		<!-- NavBar 
+		<div th:insert="layout/header :: ${navbar}" class="m-0 p-0"></div> -->
+		
+		<div style="height: 100vh; width: 100vw;" class="d-flex justify-content-center align-items-center p-0 m-0">
+		
+		<div class="container-fluid d-flex justify-content-center my-5">
+			<div class="card my-3" style="width: 70vw;">
+  				<div class="card-body container">
+  				
+  					<div class="row">
+					  			<div class="col-sm-10 container mx-auto mt-1 mb-3">
+					  				<div class="row">
+					  					<h3 class="h3 text-center m-auto">SELECCIONAR CATEGORÍA</h3>
+					  				</div>
+					  			</div> 
+					  			
+					  			<form class="col-sm-10 container m-auto" th:object="${categoriaForm}" th:action="@{/seleccionarCategoria}" method="post">
+							  		<div class="row">
+									  	<div class="col-sm-12 form-group">
+							  				<div class="container">
+							  					<div class="row">
+							  						<label class="col-sm-12 col-lg-3 text-center" for="categoria">SELECCIONE CATEGORIA:</label>
+							  						<select class="custom-select col-sm-12 col-lg-5 my-2" id="" th:field="*{nombre}" required>
+													        <option th:each="categoria : ${categorias}"
+													        	th:text="${categoria.nombre}"
+													        	th:value="${categoria.nombre}"
+													        ></option>
+												    </select>
+												    <button type="submit" class="col-sm-12 col-lg-3 btn btn-primary m-2">
+							  							<i class="fas fa-search"></i> &nbsp; BUSCAR
+							  						</button>
+							  					</div>
+							  				</div>
+									  	</div>
+									  	
+									  	<div th:if="${mensajeError}" class="col-sm-12 mt-1 mb-0">
+									  		<div class="container">
+									  			<div class="row">
+									  				<div th:text="${mensajeError}" class="alert alert-danger col-sm-12 text-center" role="alert"></div>
+									  			</div>
+									  		</div>
+							  			</div>
+							  			
+							  			<div th:if="${mensajeEnc}" class="col-sm-12 mt-1 mb-0">
+									  		<div class="container">
+									  			<div class="row">
+									  				<div th:text="${mensajeEnc}" class="alert alert-success col-sm-12 text-center" role="alert"></div>
+									  			</div>
+									  		</div>
+							  			</div>
+							  			
+							  			<div th:if="${categoriaSelect}" class="col-sm-12 mt-1 mb-0">
+									  		<div class="container">
+									  			<div class="row">
+									  				<div th:text="'CATEGORIÍA: ' + ${categoriaSelect.nombre}" class="alert alert-dark col-sm-12 text-center" role="alert"></div>
+									  			</div>
+									  		</div>
+							  			</div>
+							  			
+							  		</div>
+								</form>
+								
+								<div th:if="${table}" class="table-responsive col-sm-10 m-1 mx-auto">
+									<table class="table table-hover table-borderless">
+								  		<thead class="thead-dark">
+										 	<tr>
+										    	<th>ID</th>
+										      	<th>NickName</th>
+										      	<th>Apellido</th>
+										      	<th>Nombre</th>
+										   	</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td th:text="${jugadorSelect.id}"></td>
+												<td th:text="${jugadorSelect.nickname}"></td>
+												<td th:text="${jugadorSelect.apellido}"></td>
+												<td th:text="${jugadorSelect.nombre}"></td>
+											</tr>
+										</tbody>
+								  	</table>
+								</div>
+							  	
+					  			<div class="col-sm-10 container mx-auto my-1">
+					  				<div class="row">
+					  					<a class="btn btn-danger col-sm-3 m-auto" th:href="@{/cancelarGame}" role="button">CANCELAR</a>
+					  					<a class="btn btn-primary col-sm-3 m-auto" th:href="@{/buscandoPreguntas}" role="button">SIGUIENTE</a>
+					  				</div>
+					  			</div>
+					  			
+					  		</div>
+  				
+  				</div>
+			</div>
+			
+		</div>
+		
+		</div>
+			
+		
+		<!-- Footer 
+		<div th:insert="layout/footer :: footer-info" class="m-0 p-0"></div> -->
+		
+	    <!-- Optional JavaScript -->
+	    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	    <script th:src="@{/webjars/jquery/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+		<script th:src="@{/webjars/popper.js/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" type="text/javascript"	src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		
+	    <!--  
+	    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> -->
+  	</body>
+</html>
